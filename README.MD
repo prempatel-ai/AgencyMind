@@ -6,7 +6,7 @@
 ## What It Does
 AgencyMind lets digital agencies turn their documentation into an intelligent Q&A assistant. Built with RAG (Retrieval-Augmented Generation) — it only answers from YOUR documents, never hallucinates.
 
-## Use Cases (E2M-Specific)
+## Use Cases
 - "What's our WordPress handoff checklist?"
 - "How many revision rounds do we include?"
 - "What's the SEO reporting structure for monthly clients?"
