@@ -18,7 +18,7 @@ from rag_engine import AgencyMindRAG
 # ---------------------------------------------------------------------------
 st.set_page_config(
     page_title="AgencyMind",
-    page_icon="🧠",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -77,10 +77,10 @@ def rebuild_index() -> None:
 # ---------------------------------------------------------------------------
 col_title, col_clear = st.columns([4, 1])
 with col_title:
-    st.title("AgencyMind 🧠")
+    st.title("AgencyMind")
     st.caption("Your Agency Knowledge Base — Powered by AI")
 with col_clear:
-    if st.button("🗑️ Clear Chat", use_container_width=True):
+    if st.button("Clear Chat", use_container_width=True):
         st.session_state.chat_history = []
         st.session_state.messages = []
         st.rerun()
@@ -89,10 +89,10 @@ with col_clear:
 # Sidebar — Document Manager + API Key
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    st.header("📂 Document Manager")
+    st.header("Document Manager")
 
     # --- API Key ---
-    st.markdown("#### 🔑 Groq API Key")
+    st.markdown("#### Groq API Key")
     api_key = st.text_input(
         "Groq API Key",
         type="password",
@@ -106,7 +106,7 @@ with st.sidebar:
 
     if not st.session_state.rag.is_llm_ready:
         st.warning(
-            "⚠️ No API key set. Add your Groq API key above to enable the chatbot. "
+            "No API key set. Add your Groq API key above to enable the chatbot. "
             "Get a free key at [console.groq.com](https://console.groq.com)."
         )
 
@@ -149,13 +149,13 @@ with st.sidebar:
                         })
 
                     st.session_state.rag.build_index(docs)
-                    st.success(f"✅ {len(new_files)} file(s) indexed.")
+                    st.success(f"{len(new_files)} file(s) indexed.")
                     st.rerun()
                 except Exception as e:
-                    st.error(f"❌ Error processing files: {e}")
+                    st.error(f"Error processing files: {e}")
 
     # --- Load Sample Docs ---
-    if st.button("📚 Load Sample Agency Docs", use_container_width=True):
+    if st.button("Load Sample Agency Docs", use_container_width=True):
         with st.spinner("Loading sample documents..."):
             try:
                 sample_docs = load_sample_documents()
@@ -173,20 +173,20 @@ with st.sidebar:
                             "path": os.path.join("sample_docs", sname),
                         })
 
-                st.success("✅ 3 sample documents loaded.")
+                st.success("3 sample documents loaded.")
                 st.rerun()
             except Exception as e:
-                st.error(f"❌ Error loading sample docs: {e}")
+                st.error(f"Error loading sample docs: {e}")
 
     st.divider()
 
     # --- Document List + Delete ---
-    st.markdown("#### 📄 Loaded Documents")
+    st.markdown("#### Loaded Documents")
     if st.session_state.uploaded_docs:
         for meta in st.session_state.uploaded_docs[:]:
             col1, col2 = st.columns([4, 1])
-            col1.write(f"📄 {meta['name']}")
-            if col2.button("🗑️", key=f"del_{meta['name']}"):
+            col1.write(meta['name'])
+            if col2.button("X", key=f"del_{meta['name']}"):
                 try:
                     st.session_state.rag.delete_document(meta["name"])
                     st.session_state.uploaded_docs = [
@@ -203,7 +203,7 @@ with st.sidebar:
     stats = st.session_state.rag.get_stats()
     if stats["chunks"] > 0:
         st.markdown(
-            f"**✅ {stats['documents']} documents indexed | "
+            f"**{stats['documents']} documents indexed | "
             f"{stats['chunks']} chunks ready**"
         )
     else:
@@ -217,7 +217,7 @@ with st.sidebar:
 # If no documents, show empty state
 if not st.session_state.rag.get_stats()["chunks"]:
     st.info(
-        "📂 **No documents loaded yet.**\n\n"
+        "**No documents loaded yet.**\n\n"
         "Upload your agency SOPs, service guides, or client briefs — "
         "or click **'Load Sample Docs'** in the sidebar to try a demo."
     )
@@ -227,9 +227,9 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
         if "sources" in msg and msg["sources"]:
-            with st.expander("📄 Sources Used"):
+            with st.expander("Sources Used"):
                 for src in msg["sources"]:
-                    st.markdown(f"**📁 {src['source']}**")
+                    st.markdown(f"**{src['source']}**")
                     st.caption(f"_{src['excerpt']}_")
 
 # Chat input — disabled when no API key or no docs
@@ -268,9 +268,9 @@ if prompt := st.chat_input(
 
                 st.markdown(answer)
                 if sources:
-                    with st.expander("📄 Sources Used"):
+                    with st.expander("Sources Used"):
                         for src in sources:
-                            st.markdown(f"**📁 {src['source']}**")
+                            st.markdown(f"**{src['source']}**")
                             st.caption(f"_{src['excerpt']}_")
 
                 # Persist
@@ -299,7 +299,7 @@ if st.session_state.chat_history:
     chat_text = "\n".join(chat_text_lines)
 
     st.download_button(
-        label="💾 Download Chat",
+        label="Download Chat",
         data=chat_text,
         file_name="agencymind_chat.txt",
         mime="text/plain",

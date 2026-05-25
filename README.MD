@@ -1,6 +1,7 @@
 
+
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=500&color=00E676&center=true&vCenter=true&width=600&lines=AgencyMind+%F0%9F%A7%A0;RAG+Knowledge+Base+for+Digital+Agencies;Upload.+Ask.+Get+answers+with+sources." alt="Typing SVG" />
+  <b>RAG Knowledge Base for Digital Agencies</b>
 </p>
 
 <p align="center">
@@ -15,7 +16,7 @@
 
 <p align="center">
   <b>Upload your agency SOPs, service docs, and client briefs.</b><br/>
-  <b>Ask anything in plain English. Get answers with source citations — instantly.</b>
+  <b>Ask anything in plain English. Get answers with source citations -- instantly.</b>
 </p>
 
 <p align="center">
@@ -27,107 +28,107 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [✨ Features](#-features)
-- [🎯 Use Cases](#-use-cases)
-- [🏗️ Architecture](#%EF%B8%8F-architecture)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Quick Start](#-quick-start)
-- [🎮 How to Use](#-how-to-use)
-- [🧠 How It Works](#-how-it-works)
-- [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
-- [🤝 Contributing](#-contributing)
+- [Features](#features)
+- [Use Cases](#use-cases)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [How to Use](#how-to-use)
+- [How It Works](#how-it-works)
+- [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
 
 ---
 
-## ✨ Features
+## Features
 
 | # | Feature | Details |
 |---|---------|---------|
-| 1 | **📄 Multi-Format Upload** | Drag & drop PDF or TXT files — SOPs, guides, checklists, client briefs |
-| 2 | **🔍 Smart Retrieval** | Top-4 most relevant chunks retrieved using FAISS + HuggingFace embeddings |
-| 3 | **🤖 LLM-Powered Answers** | Groq LLaMA 3.3-70B — fast, free-tier, factual (temperature 0.3) |
-| 4 | **📎 Source Citations** | Every answer shows which document(s) it came from + excerpt preview |
-| 5 | **💬 Chat History** | Full conversational context preserved across your session |
-| 6 | **📂 Demo-Ready** | "Load Sample Docs" button instantly indexes 3 realistic agency documents |
-| 7 | **🗑️ Document Management** | Upload, view, or delete individual documents from the sidebar |
-| 8 | **💾 Export Chat** | Download your entire conversation as a `.txt` file with one click |
+| 1 | **Multi-Format Upload** | Drag & drop PDF or TXT files -- SOPs, guides, checklists, client briefs |
+| 2 | **Smart Retrieval** | Top-4 most relevant chunks retrieved using FAISS + HuggingFace embeddings |
+| 3 | **LLM-Powered Answers** | Groq LLaMA 3.3-70B -- fast, free-tier, factual (temperature 0.3) |
+| 4 | **Source Citations** | Every answer shows which document(s) it came from + excerpt preview |
+| 5 | **Chat History** | Full conversational context preserved across your session |
+| 6 | **Demo-Ready** | "Load Sample Docs" button instantly indexes 3 realistic agency documents |
+| 7 | **Document Management** | Upload, view, or delete individual documents from the sidebar |
+| 8 | **Export Chat** | Download your entire conversation as a `.txt` file with one click |
 
 ---
 
-## 🎯 Use Cases
+## Use Cases
 
 ```text
-❓ "What's our WordPress handoff checklist?"
-❓ "How many revision rounds do we include?"
-❓ "What's the SEO reporting structure for monthly clients?"
-❓ "What's the client onboarding process?"
-❓ "Which plugins do we install on every WordPress site?"
+? "What's our WordPress handoff checklist?"
+? "How many revision rounds do we include?"
+? "What's the SEO reporting structure for monthly clients?"
+? "What's the client onboarding process?"
+? "Which plugins do we install on every WordPress site?"
 ```
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Streamlit Frontend (app.py)               │
-│  ┌───────────────┐  ┌──────────────────────────────────┐   │
-│  │   Sidebar     │  │         Chat Interface            │   │
-│  │  ┌─────────┐  │  │  ┌──────────┐  ┌──────────────┐  │   │
-│  │  │Upload   │  │  │  │User Msg  │  │AIMsg+Sources│  │   │
-│  │  │Manager  │  │  │  └──────────┘  └──────────────┘  │   │
-│  │  │API Key  │  │  │  ┌──────────────────────────────┐ │   │
-│  │  │Stats    │  │  │  │    Download Chat Button      │ │   │
-│  │  └─────────┘  │  │  └──────────────────────────────┘ │   │
-│  └───────────────┘  └──────────────────────────────────┘   │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────┐
-│                 document_processor.py                        │
-│  ┌──────────┐    ┌────────────────┐    ┌────────────────┐   │
-│  │PDF       │───►│Recursive      │───►│List[Document]  │   │
-│  │plumber   │    │CharSplitter   │    │+ metadata      │   │
-│  └──────────┘    │500/50         │    └────────────────┘   │
-│  ┌──────────┐    └────────────────┘                        │
-│  │TXT Reader│                                              │
-│  └──────────┘                                              │
-└──────────────────────┬──────────────────────────────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────┐
-│                     rag_engine.py                            │
-│  ┌─────────────────┐    ┌──────────┐    ┌──────────────┐   │
-│  │HuggingFace      │───►│FAISS     │───►│Groq LLaMA    │   │
-│  │Embeddings       │    │Vector DB │    │3.3-70B       │   │
-│  │(all-MiniLM-L6-v2)│   │(Top-4)   │    │+System Prompt│   │
-│  └─────────────────┘    └──────────┘    └──────────────┘   │
-└─────────────────────────────────────────────────────────────┘
++------------------------------------------------------------------+
+|                    Streamlit Frontend (app.py)                     |
+|  +-------------------+  +------------------------------------+   |
+|  |     Sidebar       |  |         Chat Interface              |   |
+|  |  +-------------+  |  |  +------------+  +---------------+ |   |
+|  |  |Upload       |  |  |  |User Msg    |  |AIMsg+Sources  | |   |
+|  |  |Manager      |  |  |  +------------+  +---------------+ |   |
+|  |  |API Key      |  |  |  +--------------------------------+ |   |
+|  |  |Stats        |  |  |  |    Download Chat Button        | |   |
+|  |  +-------------+  |  |  +--------------------------------+ |   |
+|  +-------------------+  +------------------------------------+   |
++-----------------------------+------------------------------------+
+                              |
++-----------------------------v------------------------------------+
+|                     document_processor.py                         |
+|  +------------+    +------------------+    +------------------+   |
+|  |PDF         |--->|Recursive         |--->|List[Document]    |   |
+|  |plumber     |    |CharSplitter      |    |+ metadata        |   |
+|  +------------+    |500/50            |    +------------------+   |
+|  +------------+    +------------------+                           |
+|  |TXT Reader  |                                                  |
+|  +------------+                                                  |
++-----------------------------+------------------------------------+
+                              |
++-----------------------------v------------------------------------+
+|                       rag_engine.py                               |
+|  +-------------------+    +------------+    +----------------+   |
+|  |HuggingFace        |--->|FAISS       |--->|Groq LLaMA      |   |
+|  |Embeddings         |    |Vector DB   |    |3.3-70B         |   |
+|  |(all-MiniLM-L6-v2) |    |(Top-4)     |    |+System Prompt  |   |
+|  +-------------------+    +------------+    +----------------+   |
++------------------------------------------------------------------+
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 agencymind-rag/
-├── app.py                  # Streamlit entry point — UI + state management
-├── rag_engine.py           # FAISS index + Groq RAG pipeline
-├── document_processor.py   # PDF/TXT ingestion + chunking
-├── prompts.py              # System prompt configuration
-├── sample_docs/            # Pre-loaded demo documents
-│   ├── agency_sop.txt      # Client onboarding, revisions, delivery
-│   ├── wordpress_guide.txt # WP setup, plugins, QA, handoff
-│   └── seo_checklist.txt   # On-page SEO, keyword research, reporting
-├── requirements.txt        # Python dependencies
-├── .env.example            # Environment template
-├── .gitignore
-└── README.md
++-- app.py                  # Streamlit entry point -- UI + state management
++-- rag_engine.py           # FAISS index + Groq RAG pipeline
++-- document_processor.py   # PDF/TXT ingestion + chunking
++-- prompts.py              # System prompt configuration
++-- sample_docs/            # Pre-loaded demo documents
+|   +-- agency_sop.txt      # Client onboarding, revisions, delivery
+|   +-- wordpress_guide.txt # WP setup, plugins, QA, handoff
+|   +-- seo_checklist.txt   # On-page SEO, keyword research, reporting
++-- requirements.txt        # Python dependencies
++-- .env.example            # Environment template
++-- .gitignore
++-- README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -138,7 +139,7 @@ agencymind-rag/
 
 ```bash
 # Clone
-git clone https://github.com/prempatel-ai/AgencyMind.git
+git clone https://github.com/YOUR_USERNAME/agencymind-rag
 cd agencymind-rag
 
 # Install dependencies
@@ -153,29 +154,20 @@ cp .env.example .env
 streamlit run app.py
 ```
 
-<details>
-<summary><b>📦 Or install with pip (coming soon)</b></summary>
-
-```bash
-pip install agencymind-rag
-agencymind
-```
-</details>
-
 ---
 
-## 🎮 How to Use
+## How to Use
 
 1. **Open** `http://localhost:8501` in your browser
-2. **🔑 Add your Groq API key** in the sidebar
-3. **📂 Upload documents** — drag & drop PDFs or TXT files (or click "Load Sample Agency Docs")
-4. **💬 Ask questions** — type anything about your agency workflows
-5. **📎 Review sources** — expand "Sources Used" to see which document contributed to the answer
-6. **💾 Export** — download the full conversation as .txt
+2. **Add your Groq API key** in the sidebar
+3. **Upload documents** -- drag & drop PDFs or TXT files (or click "Load Sample Agency Docs")
+4. **Ask questions** -- type anything about your agency workflows
+5. **Review sources** -- expand "Sources Used" to see which document contributed to the answer
+6. **Export** -- download the full conversation as .txt
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 ```mermaid
 flowchart LR
@@ -192,15 +184,15 @@ flowchart LR
 
 AgencyMind uses **Retrieval-Augmented Generation (RAG)**:
 
-1. **Indexing** — Your documents are split into chunks (500 chars with 50 overlap), embedded into vectors using a free local HuggingFace model, and stored in a FAISS index
-2. **Retrieval** — When you ask a question, it's embedded the same way and the top 4 most semantically similar chunks are retrieved
-3. **Generation** — Those chunks are passed as context to Groq's LLaMA 3.3-70B along with the system prompt, which enforces strict answer-from-context rules
+1. **Indexing** -- Your documents are split into chunks (500 chars with 50 overlap), embedded into vectors using a free local HuggingFace model, and stored in a FAISS index
+2. **Retrieval** -- When you ask a question, it's embedded the same way and the top 4 most semantically similar chunks are retrieved
+3. **Generation** -- Those chunks are passed as context to Groq's LLaMA 3.3-70B along with the system prompt, which enforces strict answer-from-context rules
 
 **Why this matters:** The LLM never sees your documents during training. It only sees the retrieved chunks. This means answers are grounded in your actual documentation, not the model's general knowledge.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
@@ -217,21 +209,21 @@ AgencyMind uses **Retrieval-Augmented Generation (RAG)**:
 | **Streamlit** | Frontend UI | Fastest way to build data apps in Python |
 | **LangChain** | RAG orchestration | Production-grade retrieval chains |
 | **FAISS** | Vector store | Blazing fast similarity search, no external DB |
-| **HuggingFace Embeddings** | Text → vectors | Free, local, no API key needed |
+| **HuggingFace Embeddings** | Text to vectors | Free, local, no API key needed |
 | **Groq LLaMA 3.3-70B** | LLM | Free-tier, 30 req/min, ultra low latency |
 | **pdfplumber** | PDF extraction | More accurate text extraction than PyPDF2 |
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how to help:
 
-1. 🍴 Fork the repo
-2. 🌿 Create a feature branch (`git checkout -b feature/amazing`)
-3. 💾 Commit (`git commit -m 'Add amazing feature'`)
-4. 📤 Push (`git push origin feature/amazing`)
-5. 🎯 Open a Pull Request
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/amazing`)
+3. Commit (`git commit -m 'Add amazing feature'`)
+4. Push (`git push origin feature/amazing`)
+5. Open a Pull Request
 
 **Ideas for contributions:**
 - Add support for DOCX files
@@ -243,12 +235,20 @@ Contributions are welcome! Here's how to help:
 ---
 
 <p align="center">
-  <b>AgencyMind 🧠</b> — <i>Your agency knowledge, instantly accessible.</i><br/>
-  <sub>Built with ❤️ for digital agencies that value their documentation.</sub>
+  <b>AgencyMind</b> -- <i>Your agency knowledge, instantly accessible.</i><br/>
+  <sub>Built for digital agencies that value their documentation.</sub>
 </p>
 
+<pre align="center">
+ _____                      _____      _       _ 
+|  __ \                    |  __ \    | |     | |
+| |__) | __ ___ _ __ ___   | |__) |_ _| |_ ___| |
+|  ___/ '__/ _ \ '_ ` _ \  |  ___/ _` | __/ _ \ |
+| |   | | |  __/ | | | | | | |  | (_| | ||  __/ |
+|_|   |_|  \___|_| |_| |_| |_|   \__,_|\__\___|_|</pre>
+
 <p align="center">
-  <a href="#">⭐ Star this repo</a> ·
-  <a href="#">🐛 Report a bug</a> ·
-  <a href="#">💡 Request a feature</a>
+  <a href="#">Star this repo</a> .
+  <a href="#">Report a bug</a> .
+  <a href="#">Request a feature</a>
 </p>
