@@ -138,7 +138,7 @@ agencymind-rag/
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USERNAME/agencymind-rag
+git clone https://github.com/prempatel-ai/AgencyMind.git
 cd agencymind-rag
 
 # Install dependencies
