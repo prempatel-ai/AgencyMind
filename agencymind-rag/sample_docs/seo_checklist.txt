@@ -1,0 +1,73 @@
+SEO Services — Standard Operating Procedures & Checklists
+
+================================================================================
+1. ON-PAGE SEO AUDIT STEPS
+================================================================================
+
+Step 1 — Crawl Analysis: Run the client's website through Screaming Frog SEO Spider or Sitebulb. Identify broken links (404s), redirect chains, missing meta titles/descriptions, duplicate content, and orphan pages.
+
+Step 2 — Content Audit: Review the top 20 pages by organic traffic. Check for thin content (under 300 words), keyword cannibalization, and outdated information. Flag pages that need rewriting or consolidation.
+
+Step 3 — Technical Audit: Check core web vitals (LCP under 2.5s, FID under 100ms, CLS under 0.1), mobile friendliness via Google's Mobile-Friendly Test, and indexation status via Google Search Console. Note any robots.txt or sitemap issues.
+
+Step 4 — Structured Data: Verify that appropriate schema markup is in place — Article schema for blog posts, LocalBusiness schema for location pages, FAQ schema for knowledge base pages, and Product schema for e-commerce pages.
+
+Step 5 — Competitor Comparison: Compare the client's top 5 landing pages against the top 3 competitors for the same keywords. Note gaps in content depth, internal linking structure, and backlink profiles.
+
+================================================================================
+2. KEYWORD RESEARCH PROCESS
+================================================================================
+
+Step 1 — Seed List: Gather 20-30 seed keywords from the client based on their services, products, and target audience questions. Use Ahrefs or Google Keyword Planner for volume data.
+
+Step 2 — Cluster Grouping: Group keywords into topical clusters of 5-10 related terms. Each cluster will inform one cornerstone content piece supported by 3-4 cluster articles. Target keywords with 100-1,000 monthly search volume and medium competition.
+
+Step 3 — Search Intent Mapping: For each keyword cluster, label the intent as informational (blog post), navigational (landing page), commercial (comparison page), or transactional (product page). Create a content brief for each target keyword.
+
+Step 4 — SERP Analysis: Review the current top 10 results for each target keyword. Note the featured snippets, People Also Ask boxes, and image packs. Structure content to compete for featured snippet positioning.
+
+Step 5 — Tracking Setup: Add all target keywords to the client's Google Search Console and a rank tracking tool (AccuRanker or SEMrush). Set up weekly rank tracking and monthly reporting.
+
+================================================================================
+3. META TAG OPTIMIZATION GUIDE
+================================================================================
+
+Title Tag Formula: Primary Keyword — Secondary Keyword | Brand Name (55-60 characters). Each page must have a unique meta title. Avoid keyword stuffing — use the primary keyword once naturally at the start.
+
+Meta Description Formula: Include primary keyword, a value proposition, and a call to action (150-160 characters). Write for click-through rate, not just keyword matching. Example: "Learn how our WordPress maintenance service keeps your site secure, fast, and up-to-date. Get a free audit today."
+
+Open Graph Tags: Every page must have og:title (60 chars), og:description (160 chars), and og:image (1200x630px at 72dpi). Use Yoast SEO or Rank Math to auto-generate from the featured image.
+
+================================================================================
+4. MONTHLY REPORTING STRUCTURE
+================================================================================
+
+Executive Summary (1 page): Overall organic traffic trend, top-performing pages, major wins, and areas needing attention.
+
+Performance Metrics: Organic sessions (month-over-month and year-over-year), keyword rankings movement (improved, declined, new), conversion rate from organic traffic, and average position in SERPs.
+
+Technical Health: Core web vitals status, indexation count, crawl errors found and fixed, and page speed scores.
+
+Content Performance: Top 5 pages by organic traffic, bottom 5 pages by organic traffic, new content published this month, and content update recommendations.
+
+Competitor Watch: Top 3 competitor movements — new content they published, new backlinks acquired, and ranking changes.
+
+Action Plan for Next Month: 3-5 specific action items with assigned owner and deadline.
+
+================================================================================
+5. CLIENT COMMUNICATION TEMPLATES
+================================================================================
+
+Monthly Report Email:
+Subject: [Client Name] — SEO Monthly Report — [Month Year]
+Body: Hi [Client Name], please find attached your SEO performance report for [Month]. Highlights this month: [top 3 wins]. Your next strategy call is scheduled for [date]. Let me know if you have any questions.
+
+Strategy Call Agenda (30 minutes):
+- 5 min: Review last month's action items
+- 10 min: Report deep dive (traffic, rankings, conversions)
+- 10 min: Next month's strategy and content plan
+- 5 min: Q&A and next steps
+
+Urgent Alert Template:
+Subject: [Action Required] — Critical SEO Issue Detected on [Client Name]
+Body: Hi [Client Name], we've detected [issue description — e.g., a sharp traffic drop of X% on Y date / a manual action in Google Search Console]. Here's what we recommend: [solution]. We've already begun work on this and will update you within [timeframe].

@@ -1,0 +1,66 @@
+Agency Standard Operating Procedures (SOP)
+
+================================================================================
+1. CLIENT ONBOARDING PROCESS
+================================================================================
+
+Step 1 — Discovery Call: Schedule a 30-minute call with the new client within 24 hours of signed agreement. Discuss their business goals, target audience, current marketing efforts, and pain points. Document all notes in the project brief template.
+
+Step 2 — Service Agreement & NDA: Ensure both parties have signed the master service agreement and any applicable NDAs. File signed copies in the client folder on Google Drive under "Legal."
+
+Step 3 — Access Credentials Collection: Request and document all required access including domain registrars, hosting panels (cPanel, WP Engine), CMS admin logins (WordPress, Shopify), Google Analytics, Google Search Console, and social media accounts. Store in the shared password manager (LastPass/1Password) under the client's account.
+
+Step 4 — Kick-off Questionnaire: Send the standardized kick-off questionnaire covering brand guidelines, preferred communication channels, content assets available, competitor URLs, and key performance indicators. Client must return within 5 business days.
+
+Step 5 — Internal Handoff Meeting: Schedule a 45-minute internal meeting with the project manager, account manager, and relevant specialists (designer, developer, SEO specialist). Review the project brief, assign tasks in the project management tool (ClickUp/Asana), and set milestone deadlines.
+
+================================================================================
+2. PROJECT KICK-OFF CHECKLIST
+================================================================================
+
+- [ ] Client folder created on Google Drive with subfolders: Briefs, Assets, Deliverables, Reports, Legal
+- [ ] Project created in ClickUp/Asana with milestones and task dependencies mapped
+- [ ] Brand guidelines reviewed and shared with the creative team
+- [ ] Access credentials verified and tested
+- [ ] Initial content inventory completed
+- [ ] Competitor analysis initiated
+- [ ] Baseline KPIs documented (current traffic, rankings, conversion rates)
+- [ ] Communication schedule established with client
+
+================================================================================
+3. COMMUNICATION PROTOCOL
+================================================================================
+
+Response Times:
+- Email: Within 4 business hours
+- Slack/Direct Message: Within 2 business hours during working hours (9 AM — 6 PM IST, Monday — Friday)
+- Urgent requests: Acknowledge within 30 minutes, resolution within 4 hours
+
+Escalation Ladder:
+- Level 1: Account Manager (first point of contact, handles all routine requests)
+- Level 2: Project Manager (escalated when scope changes or deadlines are at risk)
+- Level 3: Delivery Head (escalated for client satisfaction issues, contract disputes)
+
+Status Reports: Every client receives a weekly email update every Friday at 4 PM IST summarizing completed tasks, pending items, and next week's priorities.
+
+================================================================================
+4. REVISION POLICY
+================================================================================
+
+- Each project includes two (2) rounds of revisions at no additional cost
+- Revision requests must be submitted in a single consolidated document — no piecemeal requests
+- Turnaround time for revisions: 3 business days from receipt of consolidated feedback
+- Additional revision rounds beyond the included two will be billed at the standard hourly rate of INR 1,200/hour
+- Scope changes that require new deliverables are not considered revisions and will require a change order
+
+================================================================================
+5. PROJECT DELIVERY CHECKLIST
+================================================================================
+
+- [ ] All deliverables tested and verified by the QA team
+- [ ] Client reviewed and signed off on final deliverables
+- [ ] Handoff documentation prepared including login credentials summary, asset inventory, and maintenance guide
+- [ ] Handoff call scheduled with client (30 minutes max)
+- [ ] Post-delivery survey sent via Google Forms
+- [ ] Project marked complete in the project management tool
+- [ ] Case study draft created for internal marketing use

@@ -1,0 +1,68 @@
+WordPress Development Guide — Standard Workflow
+
+================================================================================
+1. SITE SETUP WORKFLOW
+================================================================================
+
+Step 1 — Hosting & Domain: Provision hosting on WP Engine or SiteGround. Point the domain to the hosting nameservers. Install a valid SSL certificate via Let's Encrypt or your hosting provider.
+
+Step 2 — Core Installation: Install the latest version of WordPress via the hosting control panel (Softaculous or manual install). Set the admin username to something other than "admin" — use the format: clientname_am_admin. Use a strong auto-generated password saved to the password manager.
+
+Step 3 — Base Configuration: Under Settings > General, set the site title, tagline, and correct timezone (Asia/Kolkata). Under Settings > Permalinks, select "Post name" structure. Under Settings > Discussion, disable pingbacks and trackbacks globally.
+
+Step 4 — Theme Installation: Install the approved theme (Astra, GeneratePress, or a custom theme built on Underscores). Activate the theme and import demo content if applicable. Do NOT modify parent theme files — use a child theme for all customizations.
+
+Step 5 — Essential Plugins: Install the following standard plugins: Yoast SEO or Rank Math, Wordfence Security, WP Rocket or W3 Total Cache, UpdraftPlus for backups, Contact Form 7 or WPForms Lite, and Smush for image optimization.
+
+================================================================================
+2. PLUGIN INSTALLATION STANDARDS
+================================================================================
+
+- Only install plugins from the official WordPress repository or reputable developers with a minimum of 10,000 active installs and 4+ star ratings
+- Premium plugins must be purchased with the client's license key, never shared or nulled versions
+- Deactivate and delete any plugin not in active use
+- Keep all plugins updated to the latest version — check weekly
+- Before updating a plugin, take a full backup via UpdraftPlus
+
+================================================================================
+3. PAGE BUILDER GUIDELINES (ELEMENTOR / DIVI)
+================================================================================
+
+Elementor Standard:
+- Use Elementor's theme builder for header, footer, and single post templates
+- Build pages using sections, columns, and widgets — avoid custom CSS where possible
+- Use global widgets for recurring elements like CTAs and testimonial blocks
+- Enable "Improved CSS Loading" under Elementor > Settings > Experiments
+
+Divi Standard:
+- Use the Divi Builder's visual mode for layout design
+- Store section layouts in the Divi Library for reuse across pages
+- Avoid nesting modules more than 3 levels deep to maintain page speed
+- Use the Divi Role Editor to lock client from accessing advanced settings
+
+================================================================================
+4. QUALITY ASSURANCE CHECKLIST
+================================================================================
+
+- [ ] All pages render correctly on desktop (1920px), tablet (768px), and mobile (375px)
+- [ ] All forms submit successfully and send email notifications
+- [ ] SSL certificate is valid and all pages load over HTTPS
+- [ ] Google PageSpeed score is 80+ on mobile and 90+ on desktop
+- [ ] No broken links — run through W3C Link Checker
+- [ ] All images are optimized and have descriptive alt text
+- [ ] Yoast/RankMath readability scores are green on all content pages
+- [ ] XML sitemap is generated and submitted to Google Search Console
+
+================================================================================
+5. HANDOFF TO CLIENT PROCESS
+================================================================================
+
+Step 1 — Create a video walkthrough (Loom, max 15 minutes) covering the WordPress admin area, how to update content, how to add blog posts, and where to find analytics.
+
+Step 2 — Send a handoff document containing: site URL, admin login URL, username, support email, plugin list with license keys, hosting provider and plan details, backup schedule, and maintenance fee structure.
+
+Step 3 — Schedule a 45-minute training call with the client to walk through the video and answer questions.
+
+Step 4 — Transfer admin ownership. Create an Editor-level user account for the client's daily use. Retain an Administrator account for agency maintenance access.
+
+Step 5 — Move the project to "Maintenance Mode" in the project management tool with the agreed-upon monthly retainer schedule.
